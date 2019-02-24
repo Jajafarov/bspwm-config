@@ -1,0 +1,165 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+hyper + Return
+	urxvt
+
+# program launcher
+super + space
+	rofi -show run
+
+# make sxhkd reload its configuration files:
+hyper + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit bspwm normally
+hyper + alt + Escape
+	bspc quit
+
+# close and kill
+hyper + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+hyper + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+hyper + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+hyper + g
+	bspc node -s biggest
+
+#
+# state/flags
+#
+
+# set the window state
+hyper + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+hyper + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+hyper + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+hyper + {r,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+hyper + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+hyper + {shift + ,_}Tab
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+hyper + grave
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+hyper + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+hyper + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
+	bspc {desktop -f,node -d} '{I,II,III,IV,V,VI,VII,VIII,IX,X}'
+
+#
+# preselect
+#
+
+# preselect the direction
+hyper + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+hyper + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+hyper + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+hyper + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+hyper + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+hyper + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+hyper + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# personal commands
+#
+
+# mute, decrease or increase volume
+{XF86AudioMute, XF86AudioLowerVolume, XF86AudioRaiseVolume}
+	ponymix {toggle, decrease 5, increase 5}
+
+# play/pause media
+Pause
+	playerctl play-pause 2> /dev/null
+
+# previous/next song
+hyper + {XF86AudioLowerVolume, XF86AudioRaiseVolume}
+      	playerctl {previous, next} 2> /dev/null
+
+# screenshot
+Print
+	maim ~/Pictures/screenshots/$(date +%s)-screenshot.png & sleep 1; notify-send 'Screenshot' "Screenshot has been taken"
+
+# select screen area and copy to clipboard
+hyper + Print
+      	maim -s | xclip -selection clipboard -t image/png & notify-send 'Screenshot' "Screenshot has been sent to clipboard"
+
+# screenshot active window
+hyper + super + Print
+      	maim -i $(xdotool getactivewindow) ~/Pictures/screenshots/$(date +%s)-window-screenshot.png & notify-send 'Screenshot' "Screenshot has been taken of the active window"
+
+# select screen area and save
+hyper + shift + Print
+      	maim -s ~/Pictures/screenshots/$(date +%s)-area-screenshot.png & notify-send 'Screenshot' "Screenshot has been taken"
+
+# reload dunst
+hyper + shift + d
+	killall -q dunst && dunst&
+
+# send dummy notification
+hyper + shift + e
+      	notify-send "Hello"
+
+# lock the screen
+hyper + Scroll_Lock
+        i3lock -ui ~/Pictures/ultrawide/lucky-pond-ps-long.png

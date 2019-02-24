@@ -1,0 +1,16 @@
+URxvt*scrollBar:         false
+URxvt*scrollBar_right:   false
+
+URxvt*transparent:       false
+
+URxvt.font: xft:cherry-13-r
+URxvt.letterSpace: 0
+
+*antialias:  true
+*autohint:   false
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: Firefox
+URxvt.matcher.button: 1
+
+Xcursor.theme: Bibata_Ice
