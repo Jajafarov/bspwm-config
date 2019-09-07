@@ -14,6 +14,10 @@ super + space
 hyper + Escape
 	pkill -USR1 -x sxhkd
 
+# open a book
+super + b
+        books-search.sh      
+
 #
 # bspwm hotkeys
 #
@@ -162,4 +166,27 @@ hyper + shift + e
 
 # lock the screen
 hyper + Scroll_Lock
-        i3lock -ui ~/Pictures/ultrawide/lucky-pond-ps-long.png
+        gllock
+
+# rotate the DP screen
+hyper + ctrl + r
+      	xrandr --output DP1 --rotate left && relaunch_polybar1.sh
+
+# rotate the DP screen back to normal orientation
+hyper + ctrl + n
+  	xrandr --output DP1 --rotate normal && relaunch_polybar1.sh
+
+# pick an anime episode to watch
+hyper + ctrl + a
+	anime
+
+# make all windows in the focused display equal in size
+hyper + ctrl + b
+      	bspc node @/ -B
+
+# toggle scratch terminal
+F12
+	scratchtermtoggle
+
+#ctrl + t
+#       sleep 0.5; new_tab.sh

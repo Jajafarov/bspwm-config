@@ -69,7 +69,7 @@ font-6 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = bspwm
 modules-center = player-mpris-simple
-modules-right = pulseaudio left-pomo pomo right-pomo left-weather openweathermap-fullfeatured right-weather left-github notification-github right-github left-bluetooth bluetooth right-bluetooth left-redshift info-redshift-temp right-redshift left-memory memory right-memory left-cpu cpu right-cpu left-temp temperature right-temp left-date date2 right-date powermenu
+modules-right = left-github notification-github right-github left-bluetooth bluetooth right-bluetooth left-redshift info-redshift-temp right-redshift left-memory memory right-memory left-cpu cpu right-cpu left-temp temperature right-temp left-date date2 right-date
 
 tray-position = right
 tray-padding = 2
@@ -121,7 +121,7 @@ font-6 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = bspwm
 modules-center = 
-modules-right = left-date date2 right-date
+modules-right = pulseaudio left-nordvpn vpn-nordvpn-status right-nordvpn left-pomo pomo right-pomo left-weather openweathermap-fullfeatured right-weather left-date date2 right-date
 
 wm-restack = bspwm
 ;wm-restack = i3
@@ -339,6 +339,14 @@ exec = pomo status
 label-background = ${colors.alter1}
 label-foreground = ${colors.background}
 
+[module/vpn-nordvpn-status]
+type = custom/script
+exec = ~/.scripts/vpn-nordvpn-status.sh
+interval = 5
+label-background = ${colors.alter2}
+label-foreground = ${colors.background}
+
+
 [module/left-glyph]
 type = custom/text
 content = %{T5}%{T-}
@@ -420,6 +428,14 @@ content-foreground = ${module/pomo.label-background}
 [module/right-pomo]
 inherit = module/right-glyph
 content-foreground = ${module/pomo.label-background}
+
+[module/left-nordvpn]
+inherit = module/left-glyph
+content-foreground = ${module/vpn-nordvpn-status.label-background}
+
+[module/right-nordvpn]
+inherit = module/right-glyph
+content-foreground = ${module/vpn-nordvpn-status.label-background}
 
 [settings]
 screenchange-reload = true
