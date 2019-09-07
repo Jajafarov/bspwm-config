@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+ls ~/TV-Shows/Anime/* -t | rofi -dmenu -only-match -p "Anime > " | xargs -I {} find {} | xargs -I {} mpv "{}"

@@ -11,11 +11,12 @@
 !.config/rofi
 !.config/bspwm
 !.config/sxhkd
-!.scripts/info-redshift-temp.sh
-!.scripts/player-mpris-simple.sh
-!.scripts/post-wal.sh
+!.config/fish
+!.scripts/
 !.config/dunst/**
 !.config/polybar/**
 !.config/rofi/**
 !.config/bspwm/**
 !.config/sxhkd/**
+!.config/fish/**
+!.scripts/**
