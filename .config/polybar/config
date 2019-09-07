@@ -69,7 +69,7 @@ font-6 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = bspwm
 modules-center = player-mpris-simple
-modules-right = left-github notification-github right-github left-bluetooth bluetooth right-bluetooth left-redshift info-redshift-temp right-redshift left-memory memory right-memory left-cpu cpu right-cpu left-temp temperature right-temp left-date date2 right-date
+modules-right = left-bluetooth bluetooth right-bluetooth left-redshift info-redshift-temp right-redshift left-memory memory right-memory left-cpu cpu right-cpu left-temp temperature right-temp left-date date2 right-date
 
 tray-position = right
 tray-padding = 2
