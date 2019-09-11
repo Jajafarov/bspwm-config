@@ -19,4 +19,5 @@
 !.config/bspwm/**
 !.config/sxhkd/**
 !.config/fish/**
+!.config/tmux
 !.scripts/**
