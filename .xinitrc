@@ -13,4 +13,4 @@ xrdb ~/.Xresources
 xmodmap .Xmodmap
 wal -R
 exec bspwm
-start_jack.sh
+# start_jack.sh

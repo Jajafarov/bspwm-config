@@ -12,6 +12,7 @@
 !.config/bspwm
 !.config/sxhkd
 !.config/fish
+!.config/tmux
 !.scripts/
 !.config/dunst/**
 !.config/polybar/**
@@ -19,4 +20,5 @@
 !.config/bspwm/**
 !.config/sxhkd/**
 !.config/fish/**
+!.config/tmux/**
 !.scripts/**

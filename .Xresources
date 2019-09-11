@@ -3,7 +3,7 @@ URxvt*scrollBar_right:   false
 
 URxvt*transparent:       false
 
-URxvt.font: xft:cherry-13-r
+URxvt.font: xft:cherry-10-r;antialias=false
 URxvt.letterSpace: 0
 
 *antialias:  true

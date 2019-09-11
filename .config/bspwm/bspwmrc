@@ -3,8 +3,8 @@
 sxhkd &
 urxvt -name scratchterm -e bash -c "fish -c 'tmux -f ~/.config/tmux/tmux.conf'" &
 
-bspc monitor DP1 -d I II III IV V VI
-bspc monitor HDMI2 -d VII VIII IX X
+bspc monitor LVDS-1 -d I II III IV V VI VII VIII
+# bspc monitor HDMI2 -d VII VIII IX X
 
 # source the colors.
 . "${HOME}/.cache/wal/colors.sh"
@@ -16,10 +16,10 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Firefox desktop='^5'
-bspc rule -a Emacs desktop='^6' state=tiled
+bspc rule -a Firefox desktop='^1'
+bspc rule -a Emacs desktop='^2' state=tiled
 bspc rule -a MellowPlayer desktop='^10'
-bspc rule -a URxvt:scratchterm monitor=DP1 sticky=on state=floating locked=on hidden=on rectangle=1720x720+2780+27
+bspc rule -a URxvt:scratchterm monitor=LVDS-1 sticky=on state=floating locked=on hidden=on rectangle=500x300+418+27
 
 # Set the border colors.
 bspc config normal_border_color "$color0"

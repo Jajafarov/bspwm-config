@@ -35,10 +35,10 @@ alter1 = ${xrdb:color4}
 alter2 = ${xrdb:color3}
 
 [bar/bar1]
-monitor = ${env:MONITOR:DP1}
-width = 98%
+monitor = ${env:MONITOR:LVDS-1}
+width = 100%
 height = 27
-offset-x = 1%
+;offset-x = 1%
 ;offset-y = 1%
 radius = 0
 fixed-center = true
@@ -58,7 +58,7 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = cherry-11-r;2
+font-0 = cherry-11-r:antialias=false;2
 font-1 = Wuncon Siji:pixelsize=12;2
 font-2 = Weather Icons:size=12;4
 font-3 = Monoid Nerd Font Mono:size=12;2
@@ -69,7 +69,7 @@ font-6 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = bspwm
 modules-center = player-mpris-simple
-modules-right = left-bluetooth bluetooth right-bluetooth left-redshift info-redshift-temp right-redshift left-memory memory right-memory left-cpu cpu right-cpu left-temp temperature right-temp left-date date2 right-date
+modules-right = pulseaudio left-bat battery right-bat left-nordvpn vpn-nordvpn-status right-nordvpn left-redshift info-redshift-temp right-redshift left-memory memory right-memory left-cpu cpu right-cpu left-temp temperature right-temp left-date date2 right-date
 
 tray-position = right
 tray-padding = 2
@@ -224,7 +224,7 @@ label-volume-foreground = ${root.foreground}
 label-muted =  muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
+bar-volume-width = 5
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -244,7 +244,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 75
 
 format = <ramp> <label>
 format-background = ${colors.alter2}
@@ -257,7 +257,7 @@ format-warn-background = ${colors.alert}
 label = %temperature-c%
 label-background = ${colors.alter2}
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.alert}
+label-warn-foreground = ${colors.background}
 
 ramp-0 = 
 ramp-1 = 
@@ -346,6 +346,72 @@ interval = 5
 label-background = ${colors.alter2}
 label-foreground = ${colors.background}
 
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+label-charging-background = ${colors.alter1}
+label-charging-foreground = ${colors.background}
+label-discharging-background = ${colors.alter1}
+label-discharging-foreground = ${colors.background}
+label-full-background = ${colors.alter1}
+label-full-foreground = ${colors.background}
+label-background = ${colors.alter1}
+label-foreground = ${colors.background}
+
+format-charging = <animation-charging> <label-charging>
+format-charging-background = ${colors.alter1}
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-background = ${colors.alter1}
+format-discharging-foreground = ${colors.background}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.background}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.background}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.background}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.background}
+animation-discharging-framerate = 750
+
+[module/wlan]
+type = internal/network
+interface = net1
+interval = 3.0
+
+label-background = ${colors.alter2}
+label-foreground = ${colors.background}
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.underline}
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/left-glyph]
 type = custom/text
@@ -437,6 +503,22 @@ content-foreground = ${module/vpn-nordvpn-status.label-background}
 inherit = module/right-glyph
 content-foreground = ${module/vpn-nordvpn-status.label-background}
 
+[module/left-bat]
+inherit = module/left-glyph
+content-foreground = ${module/battery.label-background}
+
+[module/right-bat]
+inherit = module/right-glyph
+content-foreground = ${module/battery.label-background}
+
+[module/left-wlan]
+inherit = module/left-glyph
+content-foreground = ${module/wlan.label-background}
+
+[module/right-wlan]
+inherit = module/right-glyph
+content-foreground = ${module/wlan.label-background}
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -527,61 +609,6 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
-[module/wlan]
-type = internal/network
-interface = net1
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.underline}
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/mpd]
 type = internal/mpd
