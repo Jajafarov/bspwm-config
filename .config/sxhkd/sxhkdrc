@@ -188,5 +188,6 @@ hyper + ctrl + b
 F12
 	scratchtermtoggle
 
-#ctrl + t
-#       sleep 0.5; new_tab.sh
+# rofi wifi menu
+ctrl + F5
+	rofi-wifi-menu.sh

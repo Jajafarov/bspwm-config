@@ -201,7 +201,7 @@ label-background = ${colors.alter1}
 type = custom/script
 interval = 5
 
-exec = date +%R" "%a" "%d" "%b" "%Y
+exec = date +%R" "%D
 
 click-left = calendar.sh
 
@@ -341,7 +341,7 @@ label-foreground = ${colors.background}
 
 [module/vpn-nordvpn-status]
 type = custom/script
-exec = ~/.scripts/vpn-nordvpn-status.sh
+exec = ~/.scripts/vpn-nordvpn-status2.sh
 interval = 5
 label-background = ${colors.alter2}
 label-foreground = ${colors.background}
@@ -370,6 +370,7 @@ format-discharging-foreground = ${colors.background}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.background}
+format-full-prefix-background = ${colors.alter1}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
