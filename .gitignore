@@ -3,6 +3,7 @@
 !.gitignore
 !.bashrc
 !.Xresources
+!.Xdefaults
 !.xinitrc
 !.scripts
 !.config/
