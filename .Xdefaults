@@ -1,0 +1,20 @@
+URxvt*scrollBar:         false
+URxvt*scrollBar_right:   false
+
+URxvt*transparent:       false
+
+URxvt.font: xft:cherry-13-r
+URxvt.letterSpace: 0
+
+*antialias:  true
+*autohint:   false
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: Firefox
+URxvt.matcher.button: 1
+
+URxvt.keysym.C-y: eval:paste_clipboard
+URxvt.keysym.M-w: eval:selection_to_clipboard
+
+Xcursor.theme: Bibata_Ice
+Xcursor.size: 12
