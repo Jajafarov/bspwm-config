@@ -10,6 +10,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 xrdb ~/.Xresources
 # xrandr --output DP1 --rotate left
+setxkbmap -layout se
 xmodmap ~/.Xmodmap
 wal -R
 exec bspwm

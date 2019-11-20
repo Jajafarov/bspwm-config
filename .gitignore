@@ -5,6 +5,7 @@
 !.Xresources
 !.Xdefaults
 !.xinitrc
+!.Xmodmap
 !.scripts
 !.config/
 !.config/dunst

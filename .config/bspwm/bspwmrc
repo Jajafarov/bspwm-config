@@ -3,7 +3,7 @@
 sxhkd &
 urxvt -name scratchterm -e bash -c "fish -c 'tmux -f ~/.config/tmux/tmux.conf'" &
 
-bspc monitor LVDS-1 -d I II III IV V VI VII VIII
+bspc monitor LVDS1 -d I II III IV V VI VII VIII
 # bspc monitor HDMI2 -d VII VIII IX X
 
 # source the colors.

@@ -1,4 +1,4 @@
-set --universal pure_version 2.1.8 # used for bug report
+set --universal pure_version 2.3.1 # used for bug report
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
@@ -21,6 +21,7 @@ _pure_set_default pure_color_prompt_on_success $pure_color_success
 _pure_set_default pure_color_current_directory $pure_color_primary
 
 # Git
+_pure_set_default pure_enable_git true
 _pure_set_default pure_symbol_git_unpulled_commits "⇣"
 _pure_set_default pure_symbol_git_unpushed_commits "⇡"
 _pure_set_default pure_symbol_git_dirty "*"
@@ -51,10 +52,6 @@ _pure_set_default pure_separate_prompt_on_error false
 # Max execution time of a process before its run time is shown when it exits
 _pure_set_default pure_threshold_command_duration 5
 _pure_set_default pure_color_command_duration $pure_color_warning
-
-# Right Prompt variables
-_pure_set_default pure_right_prompt ""
-_pure_set_default pure_color_right_prompt $pure_color_normal
 
 # VI mode indicator
 # true (default):  indicate a non-insert mode by reversing the prompt symbol (❮)

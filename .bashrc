@@ -43,5 +43,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Programming/Python
 #source /usr/bin/virtualenvwrapper.sh
 
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
 (cat ~/.cache/wal/sequences &)
 exec fish
